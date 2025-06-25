@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <string.h>
-#include <stdio.h>
 
 typedef struct s_node 
 {
