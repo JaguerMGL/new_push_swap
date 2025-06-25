@@ -4,7 +4,7 @@ void ft_free_reorg(char *str)
 {
     if (str)
         free(str);
-    print_error("Error: malloc failed", 1, 1);
+    print_error("Error: malloc failed", 1);
 }
 
 int is_digit(char c)

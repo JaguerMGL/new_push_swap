@@ -1,5 +1,17 @@
 #include "../includes/push_swap.h"
 
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return -1;
+    while(str[i])
+        i++;
+    return i;
+}
+
 char *ft_make_join(char *s1, char *s2, size_t len1, size_t len2)
 {
     char *res;
