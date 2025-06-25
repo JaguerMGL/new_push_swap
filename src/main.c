@@ -1,19 +1,5 @@
 #include "../includes/push_swap.h"
 
-void print_stack(t_node *a)
-{
-    t_node *tmp;
-
-    tmp = a;
-    while (tmp)
-    {
-        printf("%d\n", tmp->value);
-        // printf("size = %d\n", tmp->size);
-        tmp = tmp->next;
-    }
-        
-}
-
 int main (int ac, char **av)
 {
     char **lst;

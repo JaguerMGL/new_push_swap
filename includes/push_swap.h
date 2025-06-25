@@ -107,5 +107,4 @@ void	little_sort_5(t_node **a, t_node **b);
 t_node	*find_biggest(t_node *lst);
 t_node	*find_smallest(t_node *lst);
 
-void print_stack(t_node *a);
 
