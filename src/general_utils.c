@@ -51,3 +51,27 @@ char *ft_strjoin(char *s1, char *s2)
         free(s1);
     return res;
 }
+
+int	is_sorted(t_node *lst)
+{
+	while (lst && lst->next)
+	{
+		if (lst->value > lst->next->value)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
+
+void	prependnode(t_node **lst, t_node *new)
+{
+	if (new == NULL)
+		return ;
+	if (*lst != NULL)
+	{
+		(*lst)->prev = new;
+		new->next = *lst;
+	}
+	*lst = new;
+	(*lst)->prev = NULL;
+}

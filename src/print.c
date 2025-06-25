@@ -11,3 +11,9 @@ void print_error(char *msg, int flag)
     if (flag)
         exit(1);
 }
+
+void print_error_free(char **lst, char *msg)
+{
+    ft_free_double_char(lst);
+    print_error(msg, 1);
+}

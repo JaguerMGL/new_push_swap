@@ -6,9 +6,19 @@ SRCS	= main.c \
 			check_arg.c \
 			check_arg_utils.c \
 			general_utils.c \
+			general_utils2.c \
 			print.c \
 			ft_split.c \
 			ft_split_utils.c \
+			free.c \
+			init_stack.c \
+			push_swap.c \
+			swap.c \
+			rotate.c \
+			rev_rotate.c \
+			push.c \
+			tiny_sort.c \
+			little_sort.c \
             
 SRC		= ${addprefix src/, ${SRCS}}
 OBJ_DIR = obj
