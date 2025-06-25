@@ -36,6 +36,7 @@ void	prependnode(t_node **lst, t_node *new);
 int	ft_lstlen(t_node *lst);
 void	move_to_top(t_node **stack, t_node *target);
 float	calculate_average(t_node *a);
+int	ft_strcmp(char *s1, char *s2);
 
 // print //
 void print(char *msg);
