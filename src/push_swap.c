@@ -11,6 +11,31 @@ void	little_sort(t_node **a, t_node **b)
         little_sort_5(a, b);
 }
 
+void push_b(t_node **a, t_node **b)
+{
+    float   average;
+	int	rotations;
+	int	max_rotations;
+    
+	while (ft_lstlen(*a) > 5)
+	{
+		average = calculate_average(*a);
+		rotations = 0;
+		max_rotations = ft_lstlen(*a);
+		while ((*a)->value >= average && rotations < max_rotations)
+		{
+            ra(a);
+			rotations++;
+		}
+		pb(a, b);
+        set_size(a, ft_lstlen(*a));
+        set_size(b, ft_lstlen(*b));
+	}
+    if (!is_sorted(*a))
+        little_sort_5(a, b);
+    
+}
+
 void  push_swap(t_node **a, t_node **b)
 {
     (void)b;
@@ -23,6 +48,6 @@ void  push_swap(t_node **a, t_node **b)
         little_sort(a, b);
     else
     {
-        print("les gros\n");
-    }    
+        push_b(a, b);
+    }
 }

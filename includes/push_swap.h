@@ -36,6 +36,7 @@ int	is_sorted(t_node *lst);
 void	prependnode(t_node **lst, t_node *new);
 int	ft_lstlen(t_node *lst);
 void	move_to_top(t_node **stack, t_node *target);
+float	calculate_average(t_node *a);
 
 // print //
 void print(char *msg);
@@ -61,6 +62,7 @@ unsigned int	ft_chain_len(char const *s, char c);
 // init_stack //
 t_node * init_stack(char **lst);
 t_node	*find_last_node(t_node *lst);
+void set_size(t_node **lst, int i);
 
 // push_swap //
 void    push_swap(t_node **a, t_node **b);
@@ -90,5 +92,5 @@ void	little_sort_5(t_node **a, t_node **b);
 t_node	*find_biggest(t_node *lst);
 t_node	*find_smallest(t_node *lst);
 
-
+void print_stack(t_node *a);
 

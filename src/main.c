@@ -8,7 +8,7 @@ void print_stack(t_node *a)
     tmp = a;
     while (tmp)
     {
-        printf("value = %d\n", tmp->value);
+        printf("%d\n", tmp->value);
         // printf("size = %d\n", tmp->size);
         tmp = tmp->next;
     }
