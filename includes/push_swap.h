@@ -21,9 +21,9 @@ typedef struct s_node
     int index;
     int value;
     int size;
-    int target;
-    int index_target;
-    int cost_to_target;
+    struct s_node *target;
+    int price;
+    int above_median;
     struct s_node *next;
     struct s_node *prev;
 } t_node;
@@ -64,22 +64,38 @@ t_node * init_stack(char **lst);
 t_node	*find_last_node(t_node *lst);
 void set_size(t_node **lst, int i);
 
-// push_swap //
+// push_swap - push_swap_utils- push_swap_utils2 //
 void    push_swap(t_node **a, t_node **b);
 int	ft_lstlen(t_node *lst);
+void	set_target(t_node **a, t_node **b);
+void	set_index(t_node *lst);
+void	is_median(t_node *lst);
+void	set_price(t_node **a, t_node **b);
+t_node	*find_cheapest(t_node **b);
+void	set_top(t_node **a, t_node **b, t_node *cheapest);
+
 
 //swap //
 void	sa(t_node **a);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
 
-// rotate - rev_rotate //
+// rotate - rev_rotate - full_rot - top_rot //
 void	ra(t_node **a);
 void	rb(t_node **b);
 void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
+void	full_ra(t_node **a, int pos);
+void	full_rra(t_node **a, int pos);
+void	full_rb(t_node **b, int pos);
+void	full_rrb(t_node **b, int pos);
+void	rrr_amedian(t_node **a, t_node **b, t_node *cheapest);
+void	rr_bmedian(t_node **a, t_node **b, t_node *cheapest);
+void	top_rrr(t_node **a, t_node **b, int pos);
+void	top_rr(t_node **a, t_node **b, int pos);
+
 
 // push //
 void	pa(t_node **a, t_node **b);

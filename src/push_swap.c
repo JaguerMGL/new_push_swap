@@ -1,5 +1,25 @@
 #include "../includes/push_swap.h"
 
+void	last_manip(t_node **a)
+{
+	t_node	*smallest;
+	int		la;
+
+	la = ft_lstlen(*a);
+	set_index(*a);
+	is_median(*a);
+	smallest = find_smallest(*a);
+	if (smallest->index == 0)
+		return ;
+	else
+	{
+		if (smallest->above_median)
+			full_rra(a, la - smallest->index);
+		else
+			full_ra(a, smallest->index);
+	}
+}
+
 void	little_sort(t_node **a, t_node **b)
 {
     int	len;
@@ -36,6 +56,16 @@ void push_b(t_node **a, t_node **b)
     
 }
 
+void set_nodes(t_node **a, t_node **b)
+{
+    set_index(*a);
+    set_index(*b);
+    is_median(*a);
+    is_median(*b);
+    set_target(a, b);
+    set_price(a, b);
+}
+
 void  push_swap(t_node **a, t_node **b)
 {
     (void)b;
@@ -49,5 +79,12 @@ void  push_swap(t_node **a, t_node **b)
     else
     {
         push_b(a, b);
+        while (ft_lstlen(*b) > 0)
+        {
+            set_nodes(a, b);
+            set_top(a, b, find_cheapest(b));
+            pa(a, b);
+        }
+        last_manip(a);
     }
 }

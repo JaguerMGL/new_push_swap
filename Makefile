@@ -13,9 +13,13 @@ SRCS	= main.c \
 			free.c \
 			init_stack.c \
 			push_swap.c \
+			push_swap_utils.c \
+			push_swap_utils2.c \
 			swap.c \
 			rotate.c \
 			rev_rotate.c \
+			full_rot.c \
+			top_rot.c \
 			push.c \
 			tiny_sort.c \
 			little_sort.c \
