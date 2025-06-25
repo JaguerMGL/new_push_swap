@@ -2,26 +2,27 @@
 NAME 	= push_swap
 DEBUG 	= debug.out
 # -----------------------------------Sources-------------------------------------
-SRCS	= free.c \
-			ft_split_utils.c \
-			ft_split.c \
-			full_rot.c \
-			init_stack_utils.c \
-			init_stack.c \
-			main.c \
-			push_swap_utils.c \
-			push_swap_utils2.c \
-			push_swap.c \
-			push.c \
-			rev_rotate.c \
-			rotate.c \
-			swap.c \
-			tiny_sort.c \
-			top_rot.c \
+SRCS	= main.c \
 			check_arg.c \
 			check_arg_utils.c \
-			ft_strjoin.c \
-			print_error.c 
+			general_utils.c \
+			general_utils2.c \
+			print.c \
+			ft_split.c \
+			ft_split_utils.c \
+			free.c \
+			init_stack.c \
+			push_swap.c \
+			push_swap_utils.c \
+			push_swap_utils2.c \
+			swap.c \
+			rotate.c \
+			rev_rotate.c \
+			full_rot.c \
+			top_rot.c \
+			push.c \
+			tiny_sort.c \
+			little_sort.c \
             
 SRC		= ${addprefix src/, ${SRCS}}
 OBJ_DIR = obj

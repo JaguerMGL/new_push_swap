@@ -8,20 +8,20 @@ void check_arg2(char *str)
     i = -1;
     digit_count = 0;
     if (ft_strlen(str) < 1)
-        print_error("Error: Empty argument", 1, 1);
+        print_error("Error: Empty argument", 1);
     while (str[++i])
     {
         if (is_digit(str[i]))
         digit_count++;
         else if (str[i] != ' ' && str[i] != '-')
         {
-            print_error("Error: Invalid character in argument", 1, 1);
+            print_error("Error: Invalid character in argument", 1);
         }
         if (str[i] == '-' && (str[i + 1] == '\0' || !is_digit(str[i + 1])))
-        print_error("Error: Invalid character in argument", 1, 1);
+        print_error("Error: Invalid character in argument", 1);
     }
     if (digit_count == 0)
-        print_error("Error: No digits found in argument", 1, 1);
+        print_error("Error: No digits found in argument", 1);
 }
 
 void check_all_args(char **str)
@@ -40,10 +40,10 @@ void check_all_args(char **str)
                 if (str[i][j] == '-')
                 {
                     if (str[i][j + 1] == '\0' || !is_digit(str[i][j + 1]))
-                        print_error("Error: Invalid character in argument", 1, 1);
+                        print_error("Error: Invalid character in argument", 1);
                 }
                 else
-                    print_error("Error: Invalid character in argument", 1, 1);
+                    print_error("Error: Invalid character in argument", 1);
             }
         }
     }

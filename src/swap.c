@@ -1,28 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:31:44 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:16 by ndessard         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/push_swap.h"
 
 static void	swap(t_node **lst)
 {
-	t_node	*tmp;
+	t_node	*first;
+	t_node	*second;
 
 	if (lst == NULL || *lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = (*lst)->next;
-	(*lst)->next = (*lst)->next->next;
-	(*lst)->next->prev = *lst;
-	prependnode(lst, tmp);
-	(*lst)->prev = NULL;
+		
+	first = *lst;
+	second = (*lst)->next;
+	
+	// Échanger les deux premiers nœuds
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+		
+	second->next = first;
+	second->prev = NULL;
+	first->prev = second;
+	
+	*lst = second;
 }
 
 void	sa(t_node **a)

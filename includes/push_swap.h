@@ -16,89 +16,97 @@
 #include <string.h>
 #include <stdio.h>
 
-typedef struct s_node
+typedef struct s_node 
 {
-	int				value;
-	int				index;
-	int				above_median;
-	int				price;
-	struct s_node	*target;
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_node;
+    int index;
+    int value;
+    int size;
+    struct s_node *target;
+    int price;
+    int above_median;
+    struct s_node *next;
+    struct s_node *prev;
+} t_node;
 
-// check_arg.c - check_arg_utils.c //
-char **check_arg(int ac, char **av);
-char *ft_join_all(int ac, char **av);
-char *ft_strdup(char *str);
-int is_digit(char c);
-
-
-//	free.c	//
-void			ft_free_rest(char **str, int ac);
-void			ft_free_cat(char *str);
-void			ft_free_argv(char **str);
-void			ft_check_free(t_node *a, char **str, char *msg);
-void			ft_free_all(t_node **a);
-
-//	ft_split.c -- ft_split_utils.c	//
-char			**ft_split(char const *s, char c);
-unsigned int	ft_chain_len(char const *s, char c);
-char			**ft_free(char **ptr);
-void			*ft_calloc(size_t count, size_t size);
-
-//	full_rot.c -- rotate.c -- rev_rotate.c	//
-void			full_ra(t_node **a, int pos);
-void			full_rra(t_node **a, int pos);
-void			full_rb(t_node **b, int pos);
-void			full_rrb(t_node **b, int pos);
-void			ra(t_node **a);
-void			rb(t_node **b);
-void			rr(t_node **a, t_node **b);
-void			rra(t_node **a);
-void			rrb(t_node **b);
-void			rrr(t_node **a, t_node **b);
-
-//	init_stack.c -- init_stack_utils.c	//
-void			init_stack(t_node **a, char **argv);
-t_node			*find_last_node(t_node *lst);
-char			*ft_reorg(char **argv, int argc);
-int			ft_strlen(char *str);
-char			*strjoin(char *s1, char *s2);
-
-//	push_swap.c -- push_swap_utils.c -- push_swap_utils2.c	//
-void			finish(t_node **a);
-t_node			*find_cheap(t_node **b);
-void			set_nodes(t_node **a, t_node **b);
-void			set_top(t_node **a, t_node **b, t_node *cheapest);
-int				push_b(t_node **a, t_node **b);
-void			push_swap(t_node **a, t_node **b);
-int				ft_lstlen(t_node *lst);
-void			ft_target(t_node **a, t_node **b);
-void			ft_index(t_node *lst);
-void			ft_median(t_node *lst);
-void			ft_price(t_node **a, t_node **b);
-t_node			*find_smallest(t_node *lst);
-void			prependnode(t_node **lst, t_node *new);
-
-//	push.c -- swap.c	//
-void			pa(t_node **a, t_node **b);
-void			pb(t_node **a, t_node **b);
-void			sa(t_node **a);
-void			sb(t_node **b);
-void			ss(t_node **a, t_node **b);
-
-//	tiny_sort.c	//
-void			tiny_sort(t_node **a);
-
-//  top_rot.c   //
-void			top_rr(t_node **a, t_node **b, int pos);
-void			top_rrr(t_node **a, t_node **b, int pos);
-void			rr_bmedian(t_node **a, t_node **b, t_node *cheapest);
-void			rrr_amedian(t_node **a, t_node **b, t_node *cheapest);
-
-// print_error.c //
-void print_error(const char *str, int flag, int time_to_leave);
-
-// ft_strjoin.c //
+// general_utils - general_utils2//
+int ft_strlen(char *str);
+char *ft_make_join(char *s1, char *s2, size_t len1, size_t len2);
 char *ft_strjoin(char *s1, char *s2);
+int	is_sorted(t_node *lst);
+void	prependnode(t_node **lst, t_node *new);
+int	ft_lstlen(t_node *lst);
+void	move_to_top(t_node **stack, t_node *target);
+float	calculate_average(t_node *a);
+
+// print //
+void print(char *msg);
+void print_error(char *msg, int flag);
+void print_error_free(char **lst, char *msg);
+
+// free //
+void ft_free_double_char(char **lst);
+
+// check_arg - check_arg_utils //
+char **check_arg(int ac, char **av);
+int check_space(char *str);
+int is_digit(char c);
+char *ft_strdup(char *str);
+char *ft_join_all(int ac, char **av);
+
+// ft_split - ft_split_utils //
+char	**ft_split(char const *s, char c);
+void	*ft_calloc(size_t count, size_t size);
+char	**ft_free(char **ptr);
+unsigned int	ft_chain_len(char const *s, char c);
+
+// init_stack //
+t_node * init_stack(char **lst);
+t_node	*find_last_node(t_node *lst);
+void set_size(t_node **lst, int i);
+
+// push_swap - push_swap_utils- push_swap_utils2 //
+void    push_swap(t_node **a, t_node **b);
+int	ft_lstlen(t_node *lst);
+void	set_target(t_node **a, t_node **b);
+void	set_index(t_node *lst);
+void	is_median(t_node *lst);
+void	set_price(t_node **a, t_node **b);
+t_node	*find_cheapest(t_node **b);
+void	set_top(t_node **a, t_node **b, t_node *cheapest);
+
+
+//swap //
+void	sa(t_node **a);
+void	sb(t_node **b);
+void	ss(t_node **a, t_node **b);
+
+// rotate - rev_rotate - full_rot - top_rot //
+void	ra(t_node **a);
+void	rb(t_node **b);
+void	rr(t_node **a, t_node **b);
+void	rra(t_node **a);
+void	rrb(t_node **b);
+void	rrr(t_node **a, t_node **b);
+void	full_ra(t_node **a, int pos);
+void	full_rra(t_node **a, int pos);
+void	full_rb(t_node **b, int pos);
+void	full_rrb(t_node **b, int pos);
+void	rrr_amedian(t_node **a, t_node **b, t_node *cheapest);
+void	rr_bmedian(t_node **a, t_node **b, t_node *cheapest);
+void	top_rrr(t_node **a, t_node **b, int pos);
+void	top_rr(t_node **a, t_node **b, int pos);
+
+
+// push //
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
+
+// tiny_sort - little_sort //
+void	tiny_sort(t_node **a);
+void	little_sort_4(t_node **a, t_node **b);
+void	little_sort_5(t_node **a, t_node **b);
+t_node	*find_biggest(t_node *lst);
+t_node	*find_smallest(t_node *lst);
+
+void print_stack(t_node *a);
+
