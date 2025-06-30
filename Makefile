@@ -23,7 +23,26 @@ SRCS	= main.c \
 			push.c \
 			tiny_sort.c \
 			little_sort.c \
-            
+
+CHECKER_SRCS = checker.c \
+			checker_operations.c \
+			checker_op_utils.c \
+			checker_op_utils2.c \
+			check_arg.c \
+			check_arg_utils.c \
+			general_utils.c \
+			general_utils2.c \
+			print.c \
+			ft_split.c \
+			ft_split_utils.c \
+			free.c \
+			init_stack.c \
+			rotate.c \
+			rev_rotate.c
+
+CHECKER_SRC = ${addprefix src/, ${CHECKER_SRCS}}
+CHECKER_OBJS = ${addprefix $(OBJ_DIR)/, ${CHECKER_SRC:.c=.o}}
+
 SRC		= ${addprefix src/, ${SRCS}}
 OBJ_DIR = obj
 OBJS	= ${addprefix $(OBJ_DIR)/, ${SRC:.c=.o}}
@@ -45,6 +64,11 @@ $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(OBJ_DIR) checker
+
+checker: $(CHECKER_OBJS)
+	$(CC) $(CFLAGS) $(CHECKER_OBJS) -o checker
+
 debug: $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(FSANITIZE) $(OBJS) -o $(DEBUG)
 
@@ -53,9 +77,9 @@ clean:
 	@echo "It's clean."
 
 fclean: clean
-	$(RM) $(NAME) $(DEBUG)
+	$(RM) $(NAME) $(DEBUG) checker
 	@echo "It's super clean."
 
 re: fclean all
 # -----------------------------------.phony-------------------------------------
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debug bonus

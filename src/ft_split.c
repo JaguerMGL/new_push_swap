@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:59:49 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:59:50 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static unsigned int	ft_nbr_word(char const *str, char c)
@@ -8,7 +20,7 @@ static unsigned int	ft_nbr_word(char const *str, char c)
 		str++;
 	if (*str)
 		i = 1;
-	else 
+	else
 		i = 0;
 	while (*str)
 	{

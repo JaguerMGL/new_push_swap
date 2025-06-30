@@ -1,16 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:48:28 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:51:37 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
-
-t_node	*find_last_node(t_node *lst)
-{
-	t_node	*last;
-
-	last = lst;
-	if (last == NULL)
-		return (NULL);
-	while (last->next != NULL)
-		last = last->next;
-	return (last);
-}
 
 static int	is_repeat(t_node *a, int nbr)
 {
@@ -32,7 +32,7 @@ static long	ft_atoi(const char *str)
 
 	i = 1;
 	val = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v' 
+	while (*str == '\t' || *str == '\n' || *str == '\v'
 		|| *str == '\f' || *str == '\r' || *str == ' ')
 		str++;
 	if (*str == '+' || *str == '-')
@@ -61,7 +61,7 @@ static void	append_node(t_node **a, int nbr, int i)
 	if (node == NULL)
 		return ;
 	node->value = nbr;
-    node->index = i;
+	node->index = i;
 	node->next = NULL;
 	if (*a == NULL)
 	{
@@ -76,38 +76,38 @@ static void	append_node(t_node **a, int nbr, int i)
 	}
 }
 
-void set_size(t_node **lst, int i)
+void	set_size(t_node **lst, int i)
 {
-    t_node *current;
-    
-    current = *lst;
-    while (current)
-    {
-        current->size = i;
-        current = current->next;
-    }
+	t_node	*current;
+
+	current = *lst;
+	while (current)
+	{
+		current->size = i;
+		current = current->next;
+	}
 }
 
-t_node *init_stack(char **lst)
+t_node	*init_stack(char **lst)
 {
-    t_node *tmp;
-    long    nbr;
-    int     i;
+	t_node	*tmp;
+	long	nbr;
+	int		i;
 
-    i = -1;
-    tmp = NULL;
-    while (lst[++i])
-    {
-        if (ft_strlen(lst[i]) > 12)
+	i = -1;
+	tmp = NULL;
+	while (lst[++i])
+	{
+		if (ft_strlen(lst[i]) > 12)
 			print_error_free(lst, "Error: not a interger\n");
-            nbr = ft_atoi(lst[i]);
-        if (is_repeat(tmp, (int)nbr))
-            print_error_free(lst, "Error: nbr repeat\n");
-        if (nbr > INT_MAX || nbr < INT_MIN)
-            print_error_free(lst, "Error: not a interger\n");
-        append_node(&tmp, (int)nbr, i);
-    }
-    set_size(&tmp, i);
-    ft_free_double_char(lst);
-    return tmp;
+		nbr = ft_atoi(lst[i]);
+		if (is_repeat(tmp, (int)nbr))
+			print_error_free(lst, "Error: nbr repeat\n");
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			print_error_free(lst, "Error: not a interger\n");
+		append_node(&tmp, (int)nbr, i);
+	}
+	set_size(&tmp, i);
+	ft_free_double_char(lst);
+	return (tmp);
 }

@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   little_sort.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:47:59 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:48:00 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 t_node	*find_biggest(t_node *lst)
 {
-    t_node	*biggest;
+	t_node	*biggest;
 
-    biggest = lst;
-    while (lst)
-    {
-        if (lst->value > biggest->value)
-            biggest = lst;
-        lst = lst->next;
-    }
-    return (biggest);
+	biggest = lst;
+	while (lst)
+	{
+		if (lst->value > biggest->value)
+			biggest = lst;
+		lst = lst->next;
+	}
+	return (biggest);
 }
 
 t_node	*find_smallest(t_node *lst)
@@ -30,14 +42,14 @@ t_node	*find_smallest(t_node *lst)
 
 void	little_sort_4(t_node **a, t_node **b)
 {
-    t_node	*biggest;
+	t_node	*biggest;
 
-    biggest = find_biggest(*a);
-    move_to_top(a, biggest);
-    pb(a, b);
-    tiny_sort(a);
-    pa(a, b);
-    ra(a);
+	biggest = find_biggest(*a);
+	move_to_top(a, biggest);
+	pb(a, b);
+	tiny_sort(a);
+	pa(a, b);
+	ra(a);
 }
 
 static t_node	*find_second_smallest(t_node *a, int min_val)
