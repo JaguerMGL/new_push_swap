@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 15:04:02 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 18:07:09 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/checker.h"
 
 static int	execute_instruction(char *instruction, t_node **a, t_node **b)
@@ -29,27 +41,11 @@ static int	execute_instruction(char *instruction, t_node **a, t_node **b)
 	return (1);
 }
 
-static char	*read_instruction(void)
-{
-	char	line[5];
-	char	*instruction;
-	int		i;
-
-	i = 0;
-	while (read(0, &line[i], 1) > 0 && line[i] != '\n' && i < 4)
-		i++;
-	if (i == 0)
-		return (NULL);
-	line[i] = '\0';
-	instruction = ft_strdup(line);
-	return (instruction);
-}
-
 static int	read_and_execute(t_node **a, t_node **b)
 {
 	char	*instruction;
 
-    instruction = read_instruction();
+	instruction = read_instruction();
 	while (instruction != NULL)
 	{
 		if (!execute_instruction(instruction, a, b))
@@ -60,8 +56,8 @@ static int	read_and_execute(t_node **a, t_node **b)
 		free(instruction);
 		if (is_sorted(*a) && *b == NULL)
 			return (1);
-	    instruction = read_instruction();
-    }
+		instruction = read_instruction();
+	}
 	return (0);
 }
 
@@ -83,6 +79,5 @@ int	main(int ac, char **av)
 		print("OK\n");
 	else
 		print("KO\n");
-
 	return (0);
 }

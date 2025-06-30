@@ -26,6 +26,8 @@ SRCS	= main.c \
 
 CHECKER_SRCS = checker.c \
 			checker_operations.c \
+			checker_op_utils.c \
+			checker_op_utils2.c \
 			check_arg.c \
 			check_arg_utils.c \
 			general_utils.c \

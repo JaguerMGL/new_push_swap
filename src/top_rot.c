@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   top_rot.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:40:08 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:40:09 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	top_rr(t_node **a, t_node **b, int pos)
@@ -42,13 +54,13 @@ void	rrr_amedian(t_node **a, t_node **b, t_node *cheapest)
 	if (len_b - cheapest->index > len_a - cheapest->target->index)
 	{
 		top_rrr(a, b, len_a - cheapest->target->index);
-		full_rrb(b, (len_b - cheapest->index) - 
-			(len_a - cheapest->target->index));
+		full_rrb(b, (len_b - cheapest->index)
+			- (len_a - cheapest->target->index));
 	}
 	else if (len_b - cheapest->index <= len_a - cheapest->target->index)
 	{
 		top_rrr(a, b, len_b - cheapest->index);
-		full_rra(a, (len_a - cheapest->target->index) - 
-			(len_b - cheapest->index));
+		full_rra(a, (len_a - cheapest->target->index)
+			- (len_b - cheapest->index));
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:41:05 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:41:29 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static void	swap(t_node **lst)
@@ -7,19 +19,14 @@ static void	swap(t_node **lst)
 
 	if (lst == NULL || *lst == NULL || (*lst)->next == NULL)
 		return ;
-		
 	first = *lst;
 	second = (*lst)->next;
-	
-	// Échanger les deux premiers nœuds
 	first->next = second->next;
 	if (second->next)
 		second->next->prev = first;
-		
 	second->next = first;
 	second->prev = NULL;
 	first->prev = second;
-	
 	*lst = second;
 }
 

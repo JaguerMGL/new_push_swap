@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 14:59:57 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 15:00:25 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 unsigned int	ft_chain_len(char const *s, char c)
@@ -49,6 +61,6 @@ void	*ft_calloc(size_t count, size_t size)
 		ft_bzero(ptr, count * size);
 		return (ptr);
 	}
-	else 
+	else
 		return (NULL);
 }

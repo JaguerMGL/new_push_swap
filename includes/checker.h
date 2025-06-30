@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/30 15:16:13 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 15:16:47 by ndessard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // Silent operations for checker
@@ -15,5 +27,4 @@ void	rrr_silent(t_node **a, t_node **b);
 
 // Utility functions
 int		ft_strcmp(char *s1, char *s2);
-
-int main(int ac, char **av);
+int		main(int ac, char **av);
