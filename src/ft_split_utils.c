@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:30:58 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:23 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:59:57 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 15:00:25 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void	*ft_calloc(size_t count, size_t size)
 		ft_bzero(ptr, count * size);
 		return (ptr);
 	}
-	else 
+	else
 		return (NULL);
 }

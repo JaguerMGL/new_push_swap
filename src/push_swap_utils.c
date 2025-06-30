@@ -3,33 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:31:22 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:37 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:42:18 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:42:33 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_lstlen(t_node *lst)
-{
-	struct s_node	*ptr;
-	int				i;
-
-	if (lst == NULL)
-		return (0);
-	ptr = lst->next;
-	i = 1;
-	while (ptr != NULL)
-	{
-		ptr = ptr->next;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_target(t_node **a, t_node **b)
+void	set_target(t_node **a, t_node **b)
 {
 	t_node	*chain_a;
 	t_node	*chain_b;
@@ -55,7 +38,7 @@ void	ft_target(t_node **a, t_node **b)
 	}
 }
 
-void	ft_index(t_node *lst)
+void	set_index(t_node *lst)
 {
 	int	i;
 
@@ -68,7 +51,7 @@ void	ft_index(t_node *lst)
 	}
 }
 
-void	ft_median(t_node *lst)
+void	is_median(t_node *lst)
 {
 	int	median;
 
@@ -83,7 +66,7 @@ void	ft_median(t_node *lst)
 	}
 }
 
-void	ft_price(t_node **a, t_node **b)
+void	set_price(t_node **a, t_node **b)
 {
 	int		la;
 	int		lb;
@@ -105,4 +88,20 @@ void	ft_price(t_node **a, t_node **b)
 			tick_b->price = (lb - tick_b->index) + tick_b->target->index;
 		tick_b = tick_b->next;
 	}
+}
+
+t_node	*find_cheapest(t_node **b)
+{
+	t_node	*cheapest;
+	t_node	*chain_b;
+
+	chain_b = *b;
+	cheapest = chain_b;
+	while (chain_b)
+	{
+		if (chain_b->price < cheapest->price)
+			cheapest = chain_b;
+		chain_b = chain_b->next;
+	}
+	return (cheapest);
 }

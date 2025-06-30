@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   top_rot.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:30:50 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:20:56 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:40:08 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:40:09 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ void	rrr_amedian(t_node **a, t_node **b, t_node *cheapest)
 	if (len_b - cheapest->index > len_a - cheapest->target->index)
 	{
 		top_rrr(a, b, len_a - cheapest->target->index);
-		full_rrb(b, (len_b - cheapest->index) - 
-			(len_a - cheapest->target->index));
+		full_rrb(b, (len_b - cheapest->index)
+			- (len_a - cheapest->target->index));
 	}
 	else if (len_b - cheapest->index <= len_a - cheapest->target->index)
 	{
 		top_rrr(a, b, len_b - cheapest->index);
-		full_rra(a, (len_a - cheapest->target->index) - 
-			(len_b - cheapest->index));
+		full_rra(a, (len_a - cheapest->target->index)
+			- (len_b - cheapest->index));
 	}
 }

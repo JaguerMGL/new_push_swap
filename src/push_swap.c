@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:31:28 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:43 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:45:16 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 15:32:16 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	finish(t_node **a)
+void	last_manip(t_node **a)
 {
 	t_node	*smallest;
 	int		la;
 
 	la = ft_lstlen(*a);
-	ft_index(*a);
-	ft_median(*a);
+	set_index(*a);
+	is_median(*a);
 	smallest = find_smallest(*a);
 	if (smallest->index == 0)
 		return ;
@@ -32,61 +32,69 @@ void	finish(t_node **a)
 	}
 }
 
-t_node	*find_cheap(t_node **b)
+void	little_sort(t_node **a, t_node **b)
 {
-	t_node	*cheapest;
-	t_node	*chain_b;
+	int	len;
 
-	chain_b = *b;
-	cheapest = chain_b;
-	while (chain_b)
+	len = ft_lstlen(*a);
+	if (len == 4)
+		little_sort_4(a, b);
+	else if (len == 5)
+		little_sort_5(a, b);
+}
+
+void	push_b(t_node **a, t_node **b)
+{
+	float	average;
+	int		rotations;
+	int		max_rotations;
+
+	while (ft_lstlen(*a) > 5)
 	{
-		if (chain_b->price < cheapest->price)
-			cheapest = chain_b;
-		chain_b = chain_b->next;
+		average = calculate_average(*a);
+		rotations = 0;
+		max_rotations = ft_lstlen(*a);
+		while ((*a)->value >= average && rotations < max_rotations)
+		{
+			ra(a);
+			rotations++;
+		}
+		pb(a, b);
+		set_size(a, ft_lstlen(*a));
+		set_size(b, ft_lstlen(*b));
 	}
-	return (cheapest);
+	if (!is_sorted(*a))
+		little_sort_5(a, b);
 }
 
 void	set_nodes(t_node **a, t_node **b)
 {
-	ft_index(*a);
-	ft_index(*b);
-	ft_median(*a);
-	ft_median(*b);
-	ft_target(a, b);
-	ft_price(a, b);
-}
-
-int	push_b(t_node **a, t_node **b)
-{
-	while (ft_lstlen(*a) > 3)
-		pb(a, b);
-	return (3);
+	set_index(*a);
+	set_index(*b);
+	is_median(*a);
+	is_median(*b);
+	set_target(a, b);
+	set_price(a, b);
 }
 
 void	push_swap(t_node **a, t_node **b)
 {
-	int		len_a;
-	int		len_b;
-	int		i;
-
-	i = 0;
-	len_a = ft_lstlen(*a);
-	if (len_a <= 3)
+	(void)b;
+	if (!a || !*a)
+		return ;
+	if ((*a)->size <= 3)
 		tiny_sort(a);
+	else if ((*a)->size < 6)
+		little_sort(a, b);
 	else
 	{
-		len_a = push_b(a, b);
-		tiny_sort(a);
-		len_b = ft_lstlen(*b);
-		while (i < len_b)
+		push_b(a, b);
+		while (ft_lstlen(*b) > 0)
 		{
 			set_nodes(a, b);
-			set_top(a, b, find_cheap(b));
+			set_top(a, b, find_cheapest(b));
 			pa(a, b);
-			i++;
 		}
-		finish(a);
+		last_manip(a);
 	}
 }

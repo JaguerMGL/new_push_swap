@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:31:25 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:40 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:42:06 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:42:07 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_node	*find_smallest(t_node *lst)
-{
-	t_node	*smallest;
-
-	smallest = lst;
-	while (lst)
-	{
-		if ((lst)->value < smallest->value)
-			smallest = lst;
-		lst = (lst)->next;
-	}
-	return (smallest);
-}
-
-void	prependnode(t_node **lst, t_node *new)
-{
-	if (new == NULL)
-		return ;
-	if (*lst != NULL)
-	{
-		(*lst)->prev = new;
-		new->next = *lst;
-	}
-	*lst = new;
-	(*lst)->prev = NULL;
-}
 
 void	set_top(t_node **a, t_node **b, t_node *cheapest)
 {

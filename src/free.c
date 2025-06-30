@@ -3,68 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:30:55 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:20 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 15:00:35 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 16:13:17 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_free_rest(char **str, int ac)
+void	ft_free_double_char(char **lst)
 {
 	int	i;
 
-	i = 2;
-	if (str[i] == NULL)
-		return ;
-	while (i < ac)
-		free(str[i++]);
-}
-
-void	ft_free_cat(char *str)
-{
-	free(str);
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
-void	ft_free_argv(char **str)
-{
-	int	i;
-
-	i = 0;
-	if (str == NULL || *str == NULL)
-		return ;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
-
-void	ft_check_free(t_node *a, char **str, char *msg)
-{
-	free(a);
-	ft_free_argv(str);
-	write(2, "Error: ", 7);
-	write(2, msg, ft_strlen(msg));
-	write(2, "\n", 1);
-	exit(1);
-}
-
-void	ft_free_all(t_node **a)
-{
-	t_node	*tmp;
-	t_node	*pos;
-
-	if (a == NULL)
-		return ;
-	pos = *a;
-	while (pos)
+	i = -1;
+	if (lst)
 	{
-		tmp = pos->next;
-		free(pos);
-		pos = tmp;
+		while (lst[++i])
+			free(lst[i]);
 	}
-	*a = NULL;
+	free(lst);
+}
+
+void	free_stack(t_node *stack)
+{
+	t_node	*current;
+	t_node	*next;
+
+	current = stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndessard <ndessard@student.s19.be>         +#+  +:+       +#+        */
+/*   By: ndessard <ndessard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 20:31:00 by ndessard          #+#    #+#             */
-/*   Updated: 2024/02/09 13:21:25 by ndessard         ###   ########.fr       */
+/*   Created: 2025/06/30 14:59:49 by ndessard          #+#    #+#             */
+/*   Updated: 2025/06/30 14:59:50 by ndessard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static unsigned int	ft_nbr_word(char const *str, char c)
 		str++;
 	if (*str)
 		i = 1;
-	else 
+	else
 		i = 0;
 	while (*str)
 	{
