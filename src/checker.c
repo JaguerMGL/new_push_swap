@@ -45,7 +45,7 @@ static char	*read_instruction(void)
 	return (instruction);
 }
 
-static void	read_and_execute(t_node **a, t_node **b)
+static int	read_and_execute(t_node **a, t_node **b)
 {
 	char	*instruction;
 
@@ -58,8 +58,11 @@ static void	read_and_execute(t_node **a, t_node **b)
 			print_error("Error", 1);
 		}
 		free(instruction);
+		if (is_sorted(*a) && *b == NULL)
+			return (1);
 	    instruction = read_instruction();
     }
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -76,10 +79,10 @@ int	main(int ac, char **av)
 	if (!lst)
 		print_error("Error", 1);
 	a = init_stack(lst);
-	read_and_execute(&a, &b);
-	if (is_sorted(a) && b == NULL)
+	if (read_and_execute(&a, &b))
 		print("OK\n");
 	else
 		print("KO\n");
+
 	return (0);
 }
